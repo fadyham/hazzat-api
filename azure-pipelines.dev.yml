@@ -1,0 +1,67 @@
+trigger: none
+
+pr: none
+
+pool:
+  vmImage: 'vs2017-win2016'
+
+steps:
+  # Azure Key Vault
+  # Download Azure Key Vault secrets
+  - task: AzureKeyVault@1
+    inputs:
+      azureSubscription: 'hazzat-api-dev - Azure'
+      keyVaultName: 'hazzat-api-dev'
+      secretsFilter: 'hazzat-db-ro-connectionString'
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+
+  - task: Npm@1
+    displayName: 'npm install'
+    inputs:
+      command: custom
+      workingDir: src
+      verbose: false
+      customCommand: 'install'
+
+  - task: Npm@1
+    displayName: 'npm build'
+    inputs:
+      command: custom
+      workingDir: src
+      verbose: false
+      customCommand: 'run build'
+
+  - task: Npm@1
+    displayName: 'npm test'
+    inputs:
+      command: custom
+      workingDir: src
+      verbose: false
+      customCommand: 'run test'
+    env:
+      CUSTOMCONNSTR_DBCONNECTIONSTRING: $(hazzat-db-ro-connectionString)
+
+  - task: PowerShell@1
+    displayName: 'Generate Deployment Archive'
+    inputs:
+      scriptName: .build/createDeploymentArchive.ps1
+    env:
+      ARCHIVE_FILE_PATH: $(Build.ArtifactStagingDirectory)\$(Build.BuildId).zip
+      ENLISTMENT_ROOT: $(System.DefaultWorkingDirectory)
+
+  - task: CopyFiles@2
+    displayName: 'Copy Output Files to: $(TargetFolder)'
+    inputs:
+      SourceFolder: '$(Build.ArtifactStagingDirectory)'
+      Contents: '$(Build.BuildId).zip'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      path: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
+      artifact: HazzatBuildDEV
