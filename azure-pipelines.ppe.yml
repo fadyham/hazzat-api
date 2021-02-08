@@ -4,7 +4,7 @@ trigger:
 pr: none
 
 pool:
-  vmImage: 'vs2017-win2016'
+  vmImage: 'windows-2019'
 
 steps:
   # Azure Key Vault
@@ -45,6 +45,11 @@ steps:
       customCommand: 'run test'
     env:
       CUSTOMCONNSTR_DBCONNECTIONSTRING: $(hazzat-db-ro-connectionString)
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/testResults.trx'
 
   - task: PowerShell@1
     displayName: 'Generate Deployment Archive'

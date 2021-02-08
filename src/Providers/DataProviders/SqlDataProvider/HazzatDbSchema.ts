@@ -46,7 +46,8 @@ export namespace HazzatDbSchema {
         Content_Arabic: string;
         Content_Coptic: string;
         Content_English: string;
-        Content: string;
+        Audio_Path: string;
+        Music_Path: string;
         Season_ID: number;
         Season_Name: string;
         Reason_ID: number;

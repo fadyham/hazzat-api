@@ -678,11 +678,13 @@ describe("Seasons controller", () => {
                 });
         });
 
-        it("should return a 501 for unsupported season service hymn format variations (Musical Notes)", (done) => {
+        it("should get a season service hymn format variations (Musical Notes)", (done) => {
             chai.request(server)
                 .get(`/${ResourceTypes.Seasons}/32/${ResourceTypes.Services}/17/${ResourceTypes.Hymns}/334/${ResourceTypes.Formats}/4/${ResourceTypes.Variations}`)
                 .end((err, res) => {
-                    Validators.validateErrorResponse(res, 501);
+                    Validators.validateArrayResponse(res);
+                    Validators.validateServiceHymnFormatVariationResponse(res.body[0]);
+                    Validators.validateMusicalNotesContentResponse(res.body[0].content);
                     done();
                 });
         });
@@ -974,11 +976,14 @@ describe("Seasons controller", () => {
                 });
         });
 
-        it("should return a 501 for unsupported season service hymn format variation (Musical Notes)", (done) => {
+        it("should get a season service hymn format variation (Musical Notes)", (done) => {
+            const resourceId = `/${ResourceTypes.Seasons}/32/${ResourceTypes.Services}/17/${ResourceTypes.Hymns}/334/${ResourceTypes.Formats}/4/${ResourceTypes.Variations}/639`;
             chai.request(server)
-                .get(`/${ResourceTypes.Seasons}/32/${ResourceTypes.Services}/17/${ResourceTypes.Hymns}/334/${ResourceTypes.Formats}/4/${ResourceTypes.Variations}/639`)
+                .get(resourceId)
                 .end((err, res) => {
-                    Validators.validateErrorResponse(res, 501);
+                    Validators.validateObjectResponse(res);
+                    Validators.validateServiceHymnFormatVariationResponse(res.body, resourceId);
+                    Validators.validateMusicalNotesContentResponse(res.body.content);
                     done();
                 });
         });

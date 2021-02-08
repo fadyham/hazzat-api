@@ -4,7 +4,7 @@ import { IFormatInfo } from "../../../Models/IFormatInfo";
 import { IHymnInfo } from "../../../Models/IHymnInfo";
 import { ISeasonInfo } from "../../../Models/ISeasonInfo";
 import { IServiceInfo } from "../../../Models/IServiceInfo";
-import { ContentType, IAudioContent, IHazzatContent, IHymnContent, IInformationContent, ITextContent, IVariationInfo, IVerticalHazzatContent, IVideoContent, TextColumn, TextParagraph } from "../../../Models/IVariationInfo";
+import { ContentType, IAudioContent, IHazzatContent, IHymnContent, IInformationContent, IMusicalNotesContent, ITextContent, IVariationInfo, IVerticalHazzatContent, IVideoContent, TextColumn, TextParagraph } from "../../../Models/IVariationInfo";
 import { ResourceTypes } from "../../../Routes/ResourceTypes";
 import { IDataProvider } from "../../DataProviders/IDataProvider";
 import { HazzatDbSchema } from "../../DataProviders/SqlDataProvider/HazzatDbSchema";
@@ -331,9 +331,16 @@ export class HazzatContentUtils {
                     contentType: ContentType.VerticalHazzatContent
                 } as IVerticalHazzatContent;
                 break;
+            case 4: // Musical Notes
+                content = {
+                    musicFilePath: serviceHymnFormatContentDbItem.Music_Path,
+                    audioFilePath: serviceHymnFormatContentDbItem.Audio_Path,
+                    contentType: ContentType.MusicalNotesContent
+                } as IMusicalNotesContent;
+                break;
             case 5: // Audio
                 content = {
-                    audioFilePath: serviceHymnFormatContentDbItem.Content,
+                    audioFilePath: serviceHymnFormatContentDbItem.Audio_Path,
                     contentType: ContentType.AudioContent
                 } as IAudioContent;
                 break;

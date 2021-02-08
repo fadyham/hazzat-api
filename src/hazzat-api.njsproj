@@ -66,8 +66,10 @@
     <TypeScriptCompile Include="Routes\HomeController.ts" />
     <TypeScriptCompile Include="Routes\SeasonsController.ts" />
     <Content Include="Configs\prod.json" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\Scripts\00.00.08.Install.sql" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Scripts\00.00.07.Install.sql" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Scripts\00.00.06.Install.sql" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\Scripts\00.00.08.Uninstall.sql" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Scripts\00.00.07.Uninstall.sql" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Scripts\00.00.06.Uninstall.sql" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Scripts\00.00.05.Uninstall.sql" />

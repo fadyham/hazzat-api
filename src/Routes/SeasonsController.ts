@@ -443,6 +443,14 @@ export class SeasonsController extends BaseController {
          *       englishVerticalHazzat:
          *         type: string
          *
+         *   MusicalNotesContent:
+         *     type: object
+         *     properties:
+         *       musicFilePath:
+         *         type: string
+         *       audioFilePath:
+         *         type: string
+         *
          *   AudioContent:
          *     type: object
          *     properties:
@@ -472,6 +480,7 @@ export class SeasonsController extends BaseController {
          *       - $ref: '#/definitions/TextContent'
          *       - $ref: '#/definitions/HazzatContent'
          *       - $ref: '#/definitions/VerticalHazzatContent'
+         *       - $ref: '#/definitions/MusicalNotesContent'
          *       - $ref: '#/definitions/AudioContent'
          *       - $ref: '#/definitions/VideoContent'
          *       - $ref: '#/definitions/InformationContent'

@@ -4,5 +4,6 @@ obj/
 .vs/
 *.js
 *.js.map
+*.trx
 *.user
 dist/
