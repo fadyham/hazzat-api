@@ -24,9 +24,10 @@
     "inversify": "^5.0.5",
     "mssql": "^6.3.1",
     "nconf": "^0.11.2",
+    "openapi-types": "^7.2.3",
     "q": "^1.5.1",
     "reflect-metadata": "^0.1.13",
-    "swagger-jsdoc": "^6.0.2",
+    "swagger-jsdoc": "^6.0.5",
     "swagger-ui-express": "^4.1.4",
     "tedious": "^11.0.3",
     "winston": "^3.3.3"
