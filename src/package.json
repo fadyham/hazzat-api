@@ -27,7 +27,7 @@
     "openapi-types": "^7.2.3",
     "q": "^1.5.1",
     "reflect-metadata": "^0.1.13",
-    "swagger-jsdoc": "^6.0.5",
+    "swagger-jsdoc": "^6.0.6",
     "swagger-ui-express": "^4.1.4",
     "tedious": "^11.0.3",
     "winston": "^3.3.3"
