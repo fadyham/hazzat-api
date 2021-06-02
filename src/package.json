@@ -43,7 +43,7 @@
     "@types/nconf": "^0.10.0",
     "@types/node": "^15.0.2",
     "@types/q": "^1.5.4",
-    "@types/sinon": "^10.0.0",
+    "@types/sinon": "^10.0.2",
     "axios": "^0.21.1",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
